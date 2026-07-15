@@ -480,6 +480,9 @@
       var grades = festivalGradesMap[selectedVal];
       if (grades && grades.length) {
         populateGrades(grades, 'Select a grade\u2026');
+      } else if (selectedVal && Object.prototype.hasOwnProperty.call(festivalGradesMap, selectedVal)) {
+        // Festival is live in Airtable but has no open grades — waitlist only
+        populateGrades([], 'All grades full \u2014 join the waitlist\u2026');
       } else {
         populateGrades(config.fallbackGrades || [], 'Select a grade\u2026');
       }
